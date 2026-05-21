@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses with Background</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    background: linear-gradient(-45deg, #1e3d6b, #6c5ce7, #00b894, #fdcb6e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    padding: 40px;
+    min-height: 100vh;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .course-card {
+    background: rgba(255, 255, 255, 0.95); /* slightly transparent to show background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  }
+
+  .course-card h3 {
+    color: #61044a;
+    margin-bottom: 10px;
+  }
+
+  .course-card p {
+    color: #0bbd05;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .course-card span {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    background: #c2c99f;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .courses-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Available Courses</h1>
+
+<div class="courses-container">
+  <div class="course-card">
+    <h3>Web Development</h3>
+    <p>Learn HTML, CSS, JavaScript, and modern frontend frameworks to build responsive websites.</p>
+    <span>Beginner</span>
+  </div>
+
+  <div class="course-card">
+    <h3>Java Programming</h3>
+    <p>Understand core Java concepts, OOP principles, and create console and GUI applications.</p>
+    <span>Intermediate</span>
+  </div>
+
+  <div class="course-card">
+    <h3>Artificial Intelligence</h3>
+    <p>Explore AI basics, machine learning, and neural networks for intelligent applications.</p>
+    <span>Advanced</span>
+  </div>
+
+  <div class="course-card">
+    <h3>Data Science</h3>
+    <p>Learn data analysis, visualization, and statistical modeling with Python and R.</p>
+    <span>Intermediate</span>
+  </div>
+
+  <div class="course-card">
+    <h3>React JS</h3>
+    <p>Build modern web applications using React, components, hooks, and state management.</p>
+    <span>Intermediate</span>
+  </div>
+
+  <div class="course-card">
+    <h3>Python Programming</h3>
+    <p>Master Python fundamentals, scripting, and data handling for various projects.</p>
+    <span>Beginner</span>
+  </div>
+</div>
+
+</body>
+</html>

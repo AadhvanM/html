@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Blooming Video Effect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            position: relative;
+        }
+
+        /* ================= VIDEO BACKGROUND EFFECT ================= */
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(120deg, #1a0b2e, #4a1a6b, #1e3c72, #2a5298);
+            background-size: 400% 400%;
+            animation: videoFlow 15s ease infinite;
+        }
+
+        /* Layer like video waves */
+        .video-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 60%);
+            animation: waveMove 20s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            background: radial-gradient(ellipse at center, rgba(0,255,200,0.1) 0%, transparent 50%);
+            animation: waveMove 25s linear infinite reverse;
+            top: -50%;
+            left: -50%;
+        }
+
+        .wave:nth-child(3) {
+            background: radial-gradient(ellipse at center, rgba(255,100,150,0.1) 0%, transparent 60%);
+            animation: waveMove 30s linear infinite;
+            top: -30%;
+            left: -30%;
+        }
+
+        @keyframes videoFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes waveMove {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.5); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* ================= BLOOMING FLOWERS EFFECT ================= */
+        .bloom-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            bottom: -50px;
+            opacity: 0;
+            animation: bloomRise 15s linear infinite;
+        }
+
+        .flower::before {
+            content: '✿';
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+        }
+
+        .flower:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .flower:nth-child(2) { left: 20%; animation-delay: 2s; color: #ff69b4; }
+        .flower:nth-child(3) { left: 35%; animation-delay: 4s; }
+        .flower:nth-child(4) { left: 50%; animation-delay: 1s; }
+        .flower:nth-child(5) { left: 65%; animation-delay: 3s; }
+        .flower:nth-child(6) { left: 80%; animation-delay: 5s; }
+        .flower:nth-child(7) { left: 90%; animation-delay: 2.5s; }
+
+        @keyframes bloomRise {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+                transform: translateY(-100px) scale(1);
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Extra sparkling lights */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 10px #fff; }
+        }
+
+        /* ================= UI LAYOUT ================= */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px 30px;
+            z-index: 100;
+        }
+
+        nav a {
+            margin-right: 20px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .icon {
+            font-size: 18px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* Google Logo */
+        .logo {
+            font-size: 95px;
+            font-weight: 900;
+            letter-spacing: -8px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+        }
+        .g-blue { color: #4285F4; }
+        .g-red { color: #EA4335; }
+        .g-yellow { color: #FBBC05; }
+        .g-green { color: #34A853; }
+
+        /* Search Bar */
+        .search-wrap {
+            width: 100%;
+            max-width: 580px;
+            padding: 5px;
+        }
+
+        .search-bar {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s;
+        }
+
+        .search-bar:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 0 30px rgba(100, 200, 255, 0.2);
+        }
+
+        .search-icon {
+            color: rgba(255,255,255,0.7);
+            margin-right: 15px;
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .mic-btn {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border-radius: 50%;
+            padding: 8px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Buttons */
+        .btn-box {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.5);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .links {
+            display: flex;
+            gap: 25px;
+        }
+
+        /* Glow effect behind logo */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(100,200,255,0.3) 0%, transparent 70%);
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND: VIDEO EFFECT + BLOOMING FLOWERS -->
+    <div class="video-bg">
+        <div class="video-layer">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </div>
+
+    <!-- Blooming Flowers -->
+    <div class="bloom-container">
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+        <div class="flower"></div>
+    </div>
+
+    <!-- Glow Effect behind logo -->
+    <div class="glow"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#">Gmail</a>
+        <a href="#">Images</a>
+        <i class="fas fa-th icon"></i>
+        <div class="avatar">U</div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="logo">
+            <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+        </div>
+
+        <div class="search-wrap">
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search Google or type URL...">
+                <i class="fas fa-microphone mic-btn"></i>
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <button class="btn">Google Search</button>
+            <button class="btn">I'm Feeling Lucky</button>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="links">
+            <a href="#">About</a>
+            <a href="#">Advertising</a>
+            <a href="#">Business</a>
+        </div>
+        <div class="links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Settings</a>
+        </div>
+    </footer>
+
+    <script>
+        // Add random sparkles
+        function createSparkles() {
+            const container = document.body;
+            const sparkleCount = 30;
+
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.top = Math.random() * 100 + 'vh';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        createSparkles();
+    </script>
+
+</body>
+</html>>

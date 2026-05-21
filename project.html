@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    /* VIDEO BACKGROUND */
+    #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* LOGIN BOX */
+    .login-box {
+        width: 320px;
+        padding: 40px;
+        border-radius: 16px;
+        background: rgba(16, 16, 16, 0.6);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        text-align: center;
+        color: white;
+    }
+
+    .login-box h2 {
+        margin-bottom: 20px;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        background: linear-gradient(45deg, #f22404, #055af6);
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(49, 213, 24, 0.5);
+    }
+
+    .bottom-text {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .bottom-text a {
+        color: #00e5ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+</style>
+
+</head>
+
+<body>
+
+<!-- YOUR VIDEO BACKGROUND -->
+<video autoplay muted loop id="bg-video">
+    <source src="dhoni.mp4">
+</video>
+
+<!-- LOGIN BOX -->
+<div class="login-box">
+    <h2>Login</h2>
+
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button class="btn"><a href="http://127.0.0.1:5500/project2/indexx.html">Login</a></button>
+
+    <div class="bottom-text">
+        Don't have an account? <a href="http://127.0.0.1:5500/project2/register.html">Sign up</a>
+    </div>
+</div>
+
+</body>
+</html>

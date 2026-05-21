@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Title - Google Forms</title>
+    <link rel="stylesheet" href="aadhav.css">
+</head>
+<body>
+
+    <!-- Google Forms Header (Top Gray Bar) -->
+    <div class="top-header">
+        <div class="logo-section">
+            <img src="https://www.gstatic.com/images/branding/product/2x/forms_2020q4_48dp.png" alt="Forms icon">
+            <span class="form-title-input" contenteditable="true">Untitled Form</span>
+        </div>
+        <div class="menu-section">
+            <button class="btn-menu">🗑️</button>
+            <button class="btn-menu">❓</button>
+        </div>
+    </div>
+
+    <!-- Main Form Container -->
+    <div class="form-container">
+        
+        <form>
+            <!-- Header Banner -->
+            <div class="form-header">
+                <div class="header-image" style="background-color: #c2d7f3;"></div>
+                <div class="form-title">
+                    <h1 contenteditable="true">Untitled Form</h1>
+                    <p contenteditable="true" class="form-description">Description (optional)</p>
+                </div>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-box">
+                <div class="question-title">
+                    <input type="text" placeholder="Question 1" class="input-question">
+                    <span class="required-mark">*</span>
+                </div>
+                <div class="input-area">
+                    <input type="text" placeholder="Your answer" class="text-input">
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-box">
+                <div class="question-title">
+                    <input type="text" placeholder="Question 2" class="input-question">
+                </div>
+                <div class="input-area">
+                    <div class="radio-option">
+                        <input type="radio" name="q2" id="opt1">
+                        <label for="opt1">Option 1</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="q2" id="opt2">
+                        <label for="opt2">Option 2</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Dropdown -->
+            <div class="question-box">
+                <div class="question-title">
+                    <input type="text" placeholder="Question 3" class="input-question">
+                </div>
+                <div class="input-area">
+                    <select class="dropdown-input">
+                        <option value="" disabled selected>Choose</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-footer">
+                <button type="submit" class="submit-btn">Submit</button>
+                <p class="footer-link">Never submit passwords through Google Forms.</p>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
